@@ -1,5 +1,11 @@
-p {
-    background: lightcoral;
-    color: white;
-    text-align: center;
+.people {
+    padding: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.dropzone {
+    background: red:
+    margin: 10px;
+    padding: 10px;
 }

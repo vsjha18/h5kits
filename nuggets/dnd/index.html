@@ -18,10 +18,21 @@
         <div class="container-fluid" ng-app="app" ng-controller="MainCtrl">
             <div class="row">
                 <div class="col-md-12">
-                    <p>
-                        {{ tester }}
-                    </p>
+                    <div dnd-target class="dropzone" ng-repeat="p in peoples track by $index" dnd-iter="peoples">
+                        <div dnd-drag="p" draggable="true" class="people" dnd-index="{{ $index }}">
+                            Name: {{ p.name }} <br>
+                            City: {{ p.city }}
+                        </div>
+                    </div>
+                    <!-- view the data structure -->
+                    <pre>
+                        {{ peoples | json }}
+                    </pre>
+                    <div class="">
+                        {{ updates }}
+                    </div>
                 </div>
+                <!-- col ends here -->
             </div>
         </div>
     </body>

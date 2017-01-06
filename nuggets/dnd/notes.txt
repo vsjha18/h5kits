@@ -1,0 +1,2 @@
+- how do you if the given event is wrapped with jQuery or not.
+- why do we need to refer to originalEvent for accessing data transfer object
