@@ -1,5 +1,5 @@
 Make Sure:
- - gulp is installer globally.
+ - gulp is installed globally.
  - gulp-connect plugin is installed and available globally.
  - chrome has the livereload extension.
  - point your browser to http://localhost:5000
