@@ -28,10 +28,19 @@ app.directive("dndDrag", function(){
             elems.on("dragstart", function(event){
                 var data = scope.$eval(attrs.dndDrag);
                 elems.css("border", "1px dashed black");
-                // event.dataTransfer.set("Text", "this is payload info");
+                // effectAllowed is for browser to show some default animation
+                // you still need to implement the copy/move effect.
                 event.originalEvent.dataTransfer.effectAllowed = "copy";
+                /* for set setData 'test' can be anything for example
+                text/html etc. Make sure to use same key to retreive the
+                value. Also multiple payload with different keys can be taken
+                */
                 event.originalEvent.dataTransfer.setData('test', index);
-                scope.updates = "drag has just started"
+                /* apply is necessay here becuase this function will execute
+                after the directive has instantiated. hence angular needs to
+                be explicitly told about any dom or data changes
+                */
+
                 scope.$apply()
             });
 
@@ -51,7 +60,6 @@ app.directive("dndTarget", function(){
         link: function(scope, elems, attrs) {
             var mainList = scope.$eval(attrs.dndIter);
             elems.on("dragover", function(event) {
-                event.preventDefault();
                 /*
                     dragover even keeps firing continiously hence
                     dont dont perform any css manipulation like below.
@@ -59,13 +67,22 @@ app.directive("dndTarget", function(){
                     elems.css("background", "yellow")
 
                  */
+                event.preventDefault();
                 return false;
             });
             elems.on("dragenter", function(event){
+                /*
+                    difficult to use with list data, since they are side
+                    by side.
+                */
                 elems.css("background", "yellow");
             });
 
             elems.on("dragleave", function(event){
+                /*
+                    difficult to use with list data, since they are side
+                    by side.
+                */
                 elems.css("background", "white");
             });
 
@@ -81,7 +98,8 @@ app.directive("dndTarget", function(){
                 var targetIndex = event.target.getAttribute("dnd-index");
                 console.log("source index: " + sourceIndex)
                 console.log("target index: " + targetIndex)
-                if (sourceIndex != targetIndex) {
+                console.log("this is target dom:", event.target)
+                if ((sourceIndex != targetIndex) && targetIndex != null) {
                     var temp = mainList[targetIndex]
                     mainList.splice(targetIndex, 1, mainList[sourceIndex]);
                     mainList[sourceIndex] = temp;

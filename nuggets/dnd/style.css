@@ -2,10 +2,11 @@
     padding: 10px;
     border: 1px solid black;
     cursor: pointer;
+    background: white;
 }
 
 .dropzone {
-    background: red:
+    background: red;
     margin: 10px;
     padding: 10px;
 }

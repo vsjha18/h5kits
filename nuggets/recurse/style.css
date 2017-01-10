@@ -1,0 +1,10 @@
+ul {
+    list-style-type: none;
+}
+
+.person {
+    border: 1px dashed black;
+    width: 200px;
+    margin: 20px;
+    padding: 10px;
+}

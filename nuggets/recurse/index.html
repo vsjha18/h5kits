@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="app">
     <head>
         <meta charset="utf-8">
         <title>Training Set</title>
@@ -13,26 +13,31 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.4.0/ui-bootstrap.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
+        <script type="text/ng-template" id="tree.html">
+            <div class="person">
+                name: {{ person.name }} <br>
+                place: {{ person.place }}
+            </div>
+            <ul ng-if="isArray(person)">
+                <li ng-repeat="person in person" ng-include="'tree.html'">
+            </ul>
+        </script>
     </head>
     <body>
-        <div class="container-fluid" ng-app="app" ng-controller="MainCtrl">
+        <div class="container-fluid" ng-controller="MainCtrl">
             <div class="row">
-                <div dnd-target dnd-iter="peoples" class="col-md-12">
-                    <div class="dropzone" ng-repeat="p in peoples track by $index">
-                        <div dnd-drag draggable="true" class="people" dnd-index="{{ $index }}">
-                            Name: {{ p.name }} <br>
-                            City: {{ p.city }}
-                        </div>
-                    </div>
-                    <!-- view the data structure -->
-                    <pre>
-                        {{ peoples | json }}
-                    </pre>
-                    <div class="">
-                        {{ updates }}
-                    </div>
+                <div class="col-md-12">
+                    <!-- code here  -->
+                        <ul>
+                            <li ng-repeat="person in persons" ng-include="'tree.html'">
+
+                            </li>
+                        </ul>
+                        <pre>
+                            {{ persons | json }}
+                        </pre>
+                    <!-- till here -->
                 </div>
-                <!-- col ends here -->
             </div>
         </div>
     </body>
