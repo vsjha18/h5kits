@@ -1,4 +1,4 @@
-var app = angular.module("app", []);
+var app = angular.module("app", ["dndLists"]);
 
 app.controller("MainCtrl", function($scope){
     $scope.tester = "this means angular is working ...";
@@ -6,7 +6,7 @@ app.controller("MainCtrl", function($scope){
     $scope.isArray = function(a) {
         return Array.isArray(a);
     }
-    
+
     $scope.persons = [
         {
             name: "tom",
@@ -38,7 +38,13 @@ app.controller("MainCtrl", function($scope){
             {
                 name: "akbar",
                 place: "aurangabad"
-            }
+            },
+            [
+                {
+                    name: "pinky",
+                    place: "madhubany"
+                }
+            ]
         ],
         {
             name: "vivek",
