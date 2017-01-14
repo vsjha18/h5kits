@@ -1,0 +1,14 @@
+ul {
+    list-style-type: none;
+}
+
+.person {
+    border: 1px solid black;
+    width: 200px;
+    margin: 20px;
+    padding: 10px;
+}
+
+.draggable {
+    cursor: pointer;
+}

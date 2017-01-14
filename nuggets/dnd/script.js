@@ -61,6 +61,9 @@ app.directive("dndTarget", function(){
             var mainList = scope.$eval(attrs.dndIter);
             elems.on("dragover", function(event) {
                 /*
+                    for drop event to trigger in any div you must cancel
+                    dragover and dragenter events
+
                     dragover even keeps firing continiously hence
                     dont dont perform any css manipulation like below.
                     instead use dragenter which is fired just once.
