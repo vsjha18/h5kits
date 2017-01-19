@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Training Set</title>
+
+        <!-- styles -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <!-- JS libs -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script> -->
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="MainCtrl">
+        Name = {{ name }} <br>
+        City = {{ address.city }} <br>
+        State = {{ address.state }} <br>
+        Country = {{ address.country }} <br>
+        <hr>
+        <div box class="box" employee="{{ employee }}">
+
+        </div>
+    </body>
+</html>
