@@ -3,6 +3,7 @@ var app = angular.module("app", []);
 app.controller("MainCtrl", function($scope){
     $scope.tester = "this means angular is working ...";
     $scope.message = [];
+    $scope.name = "name set in main controller"
 });
 
 app.directive("outer", function(){
@@ -10,10 +11,13 @@ app.directive("outer", function(){
         scope: true,
         restrict: "A",
         transclude: true,
-        template: "<h1> this is outer</h1> <ng-transclude><ng-transclude>",
+        template: "<h1> this is outer </h1> name = {{name}}<br> city = {{city }}; to check if this is available in transcluded boxes<ng-transclude><ng-transclude>",
         controller: function($scope) {
+            $scope.outerVar = "this is set in outer"
             $scope.message.push("outer controller executes")
             console.log("outer controller")
+            $scope.name = "outer controller overrides but no impact on main"
+            $scope.city = "bangalore"
         },
         compile: function(elems, attrs, tfn) {
             console.log("outer compile");
@@ -37,10 +41,11 @@ app.directive("middle", function(){
         scope: true,
         restrict: "A",
         transclude: true,
-        template: "<h1> this is middle </h1><ng-transclude><ng-transclude>",
+        template: "<h1> this is middle </h1> name = {{ name }}<br> city = {{ city }}<ng-transclude><ng-transclude>",
         controller: function($scope) {
             $scope.message.push("middle controller executes")
             console.log("middle compile")
+            $scope.name = "name set in middle but not impact on outer"
         },
         compile: function(elems, attrs, tfn) {
             return {
@@ -61,7 +66,7 @@ app.directive("inner", function(){
     return {
         scope: true,
         restrict: "A",
-        template: "<h1> this is inner </h1>",
+        template: "<h1> this is inner</h1> name = {{ name }}<br> city = {{ city}}",
         controller: function($scope) {
             $scope.message.push("inner controller executes");
             console.log("inner controller")
