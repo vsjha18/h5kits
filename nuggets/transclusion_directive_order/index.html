@@ -9,17 +9,20 @@
 
         <!-- JS libs -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script> -->
         <script type="text/javascript" src="script.js"></script>
     </head>
     <body ng-app="app" ng-controller="MainCtrl">
+        <h3>impact of "name" variable setting at different stages</h3>
+        <p> name = {{ name }}</p>
         <div outer class="outer">
             <div middle class="middle">
-                <div inner class=""></div>
+                <div inner class="inner"></div>
             </div>
         </div>
         <hr>
+        <h3>study the order in which directives are instantiated with transclusion</h3>
         <ol>
             <li  ng-repeat="m in message track by $index">{{ m}}</li>
         </ol>
