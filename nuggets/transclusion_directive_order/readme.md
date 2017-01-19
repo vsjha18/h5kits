@@ -58,7 +58,3 @@ back to the main controller because all are working on the same copy of scope.
 # Activities
 * Try changing to "scope=false" in the outer and study the impact.
 * Try changing to angular version 1.5.7 to study the order in which directives instantiate.
-<<<<<<< HEAD
-*
-=======
->>>>>>> 9ec11f627405c2e67534a0f6e45932fd49c03ac7
