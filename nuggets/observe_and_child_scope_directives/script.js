@@ -52,13 +52,14 @@ app.directive("box", function(){
                     // attrs.$observe("address", function(address){
                     //     if (address) {
                     //         scope.address = scope.$eval(address)
+                    //         console.log('observe firing ...')
                     //     }
                     // });
 
                     // scope.$watch("address", function(address){
                     //     if (address) {
                     //         scope.address = scope.$eval(attrs.address)
-                    //         console.log('firing ...')
+                    //         console.log('watch firing ...')
                     //     }
                     // })
                 }
