@@ -1,0 +1,22 @@
+.module {
+    background: lightblue;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px;
+}
+
+.block {
+    background: cyan;
+    border: 1px solid black;
+    padding: 20px;
+    height: 100px;
+    margin: 10px;
+}
+
+.step {
+    background: yellow;
+    border: 1px solid black;
+    padding: 5px;
+    height: 50px;
+    margin: 5px;
+}

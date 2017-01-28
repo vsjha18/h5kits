@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Training Set</title>
+
+        <!-- styles -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <!-- JS libs -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="MainCtrl">
+        <button ng-click="swapProject()">Swap Project</button>
+        <module ng-repeat="module in project.modules" index="{{ $index }}" module-data="module"></module>
+
+
+
+
+        <script type="text/ng-template" id="module">
+            <div class="module">
+                <button ng-click="moduleVm.addBlock()">Add Block</button>
+                <p> {{ moduleVm.index }} </p>
+                <h3> {{ moduleVm.name }} </h3>
+                <block ng-repeat="block in moduleVm.module.blocks" index="{{ $index }}"></block>
+            </div>
+        </script>
+
+        <script type="text/ng-template" id="block">
+            <div class="block">
+                <button ng-click="blockVm.module.blocks.splice(blockVm.index, 1)">Remove Block</button>
+                <p> {{ blockVm.index }} </p>
+                <h3> {{ blockVm.name }} </h3>
+            </div>
+        </script>
+
+    </body>
+</html>

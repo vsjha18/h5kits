@@ -30,7 +30,7 @@ app.controller("MainCtrl", function($scope){
 
 app.directive("box", function(){
     return {
-        scope: true,
+        // scope: true,
         restrict: "EA",
         template: [
             "City = {{ address.city }} <br>",
@@ -38,7 +38,6 @@ app.directive("box", function(){
             "Country = {{ address.country }} <br>"
         ],
         controller: function($scope) {
-
         },
         compile: function(elems, attrs, tfn) {
             return {
@@ -62,6 +61,8 @@ app.directive("box", function(){
                     //         console.log('watch firing ...')
                     //     }
                     // })
+
+                    console.log(attrs)
                 }
             }
         }

@@ -14,14 +14,14 @@
         <script type="text/javascript" src="script.js"></script>
     </head>
     <body ng-app="app" ng-controller="MainCtrl">
-        City = {{ address.city }} <br>
-        State = {{ address.state }} <br>
-        Country = {{ address.country }} <br>
-        <hr>
-        <button ng-click="changeAddress()">Change Whole Address</button>
-        <button ng-click="changeOneAttr()"> Change One Attr</button>
-        <div box class="box" address="address" x="y">
-
+        <div outer class="outer">
+            <div middle class="middle">
+                <div inner class=""></div>
+            </div>
         </div>
+        <hr>
+        <ol>
+            <li  ng-repeat="m in message track by $index">{{ m}}</li>
+        </ol>
     </body>
 </html>

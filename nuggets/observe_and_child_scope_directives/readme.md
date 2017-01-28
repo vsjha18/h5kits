@@ -10,7 +10,12 @@ through dom attribute. For example:
 scope.$eval(attrs.data);
 ```
 
-With above technique when the data changes, there is not change in the attribute
-and observe will not fire, simple because in child scope directives attributes
+With above technique when the data changes, there is no change in the attribute
+and observe will not fire, simply because in child scope directives attributes
 come as string, in simple words it is basically "pass by value" and the effect
 which we are looking for is "pass by reference".
+
+## With scope=true
+
+There is not impact on the way *attrs* behave in case of directives with
+scope=false; Means.
