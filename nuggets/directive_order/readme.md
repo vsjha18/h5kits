@@ -127,5 +127,5 @@ middle post link fired ..
 
 difficult to explain above observation. At least it is not where documented on the web.
 
-[Ref 1](http://stackoverflow.com/questions/16113647/ngrepeat-and-directives-execution-order)
+[Ref 1](http://stackoverflow.com/questions/16113647/ngrepeat-and-directives-execution-order)  
 [Ref 2](http://stackoverflow.com/questions/19270392/what-is-priority-of-ng-repeat-directive-can-you-change-it)
