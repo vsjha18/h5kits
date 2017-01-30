@@ -166,3 +166,25 @@ Hence we could summarize it like this:
 > instantiation and the bare controllers are completed and then angular starts to execute
 > ng-repeat. All this happens becuase ng-repeat has a high priority of 1000 and hence happens
 > first before the subsequent dom could be parsed.
+
+
+# case 4: Directives with transclusion
+
+The order in which directive's link and controller functions are executed, remain same. But the
+timing of triggering of compile function changes.
+
+```
+outer compile fired ...
+MAIN CONTROLLER
+outer controller fired ...
+outer pre link fired
+middle compile fired ...
+middle controller fired ...
+middle pre link fired
+inner compile fired ...
+inner controller fired ...
+inner pre link fired
+inner post link fired ..
+middle post link fired ..
+outer post link fired ..
+```
