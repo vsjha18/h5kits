@@ -1,37 +1,72 @@
-# what is the order of directive execution in case of transclusion.
-With angular 1.5.7 and below this is the outcome
-outer controller executes
-outer pre link executes
-middle controller executes
-middle pre link executes
-inner controller executes
-inner pre link executes
-inner post link executes
-inner controller executes
-inner pre link executes
-inner post link executes
-middle post link executes
-middle controller executes
-middle pre link executes
-inner controller executes
-inner pre link executes
-inner post link executes
-inner controller executes
-inner pre link executes
-inner post link executes
-middle post link executes
-outer post link executes
+# case 1: Nested directive without transclusion.
 
-On Angular 1.5.8 and above this is the outcome:
+code in the view
 
-outer controller executes
-outer pre link executes
-middle controller executes
-middle pre link executes
-inner controller executes
-inner pre link executes
-inner post link executes
-middle post link executes
-outer post link executes
+```html
+<outer></outer>
+```
 
-# A word on transclusion scope.
+*above outer directive contains middle and middle contains inner*
+
+this is the order:
+
+outer compile fired ...
+middle compile fired ...
+inner compile fired ...
+MAIN CONTROLLER
+outer controller fired ...
+outer pre link fired
+middle controller fired ...
+middle pre link fired
+inner controller fired ...
+inner pre link fired
+
+inner post link fired ..
+middle post link fired ..
+outer post link fired ..
+
+# case 2: With siblings
+
+In this case the code is same as above but the outer template looks like this. And
+as usual middle contains the inner.
+
+```html
+<div class="outer">
+    <middle></middle>
+    <middle></middle>
+</div>
+```
+
+outer compile fired ...
+middle compile fired ...
+inner compile fired ...
+middle compile fired ...
+inner compile fired ...
+
+MAIN CONTROLLER
+
+outer controller fired ...
+
+outer pre link fired
+middle controller fired ...
+middle pre link fired
+inner controller fired ...
+inner pre link fired
+
+inner post link fired ..
+middle post link fired ..
+
+middle controller fired ...
+middle pre link fired
+inner controller fired ...
+inner pre link fired
+
+inner post link fired ..
+middle post link fired ..
+
+outer post link fired ..
+
+
+> From the above two example it seems that angular instantiates the directives
+> as they appear in the template. It's a tree like parsing with the depth first
+> approach.

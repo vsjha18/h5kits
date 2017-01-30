@@ -1,0 +1,19 @@
+.inner {
+    width: 200px;
+    height: 100px;
+    background: powderblue;
+    padding: 10px;
+    margin: 10px;
+}
+
+.middle {
+    background: skyblue;
+    padding: 10px;
+    margin: 10px;
+}
+
+.outer {
+    background: darkturquoise;
+    padding: 10px;
+    margin: 10px;
+}

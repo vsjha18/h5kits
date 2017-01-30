@@ -1,56 +1,45 @@
 var app = angular.module("app", []);
 
 app.controller("MainCtrl", function($scope){
-    $scope.tester = "this means angular is working ...";
-    $scope.message = [];
+    console.log("MAIN CONTROLLER");
 });
 
 app.directive("outer", function(){
     return {
-        scope: true,
-        restrict: "A",
-        transclude: true,
-        template: "<h1> this is outer</h1> <ng-transclude><ng-transclude>",
+        restrict: "EA",
+        template: '<div class="outer"><middle></middle><middle></middle></div>',
         controller: function($scope) {
-            $scope.message.push("outer controller executes")
-            console.log("outer controller")
+            console.log("outer controller fired ...")
         },
-        compile: function(elems, attrs, tfn) {
-            console.log("outer compile");
+        compile: function() {
+            console.log("outer compile fired ...");
             return {
-                pre: function(scope, elems, attrs) {
-                    scope.message.push("outer pre link executes")
-                    console.log("outer pre")
+                pre: function() {
+                    console.log("outer pre link fired")
                 },
-                post: function(scope, elems, attrs) {
-                    scope.message.push("outer post link executes")
-                    console.log("outer post")
+                post: function(){
+                    console.log("outer post link fired ..")
                 }
             }
         }
     }
-});
-
+})
 
 app.directive("middle", function(){
     return {
-        scope: true,
-        restrict: "A",
-        transclude: true,
-        template: "<h1> this is middle </h1><ng-transclude><ng-transclude>",
+        restrict: "EA",
+        template: '<div class="middle"><inner></inner></div>',
         controller: function($scope) {
-            $scope.message.push("middle controller executes")
-            console.log("middle controller")
+            console.log("middle controller fired ...")
         },
-        compile: function(elems, attrs, tfn) {
+        compile: function() {
+            console.log("middle compile fired ...");
             return {
-                pre: function(scope, elems, attrs) {
-                    scope.message.push("middle pre link executes")
-                    console.log("middle pre")
+                pre: function() {
+                    console.log("middle pre link fired")
                 },
-                post: function(scope, elems, attrs) {
-                    scope.message.push("middle post link executes")
-                    console.log("middle post")
+                post: function(){
+                    console.log("middle post link fired ..")
                 }
             }
         }
@@ -59,22 +48,19 @@ app.directive("middle", function(){
 
 app.directive("inner", function(){
     return {
-        scope: true,
-        restrict: "A",
-        template: "<h1> this is inner </h1>",
+        restrict: "EA",
+        template: '<div class="inner"></div>',
         controller: function($scope) {
-            $scope.message.push("inner controller executes");
-            console.log("inner controller")
+            console.log("inner controller fired ...")
         },
-        compile: function(elems, attrs, tfn) {
+        compile: function() {
+            console.log("inner compile fired ...");
             return {
-                pre: function(scope, elems, attrs) {
-                    scope.message.push("inner pre link executes");
-                    console.log("inner pre")
+                pre: function() {
+                    console.log("inner pre link fired")
                 },
-                post: function(scope, elems, attrs) {
-                    scope.message.push("inner post link executes");
-                    console.log("inner post")
+                post: function(){
+                    console.log("inner post link fired ..")
                 }
             }
         }
