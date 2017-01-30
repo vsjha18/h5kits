@@ -2,12 +2,13 @@ var app = angular.module("app", []);
 
 app.controller("MainCtrl", function($scope){
     console.log("MAIN CONTROLLER");
+    $scope.list = [1, 2];
 });
 
 app.directive("outer", function(){
     return {
         restrict: "EA",
-        template: '<div class="outer"><middle></middle><middle></middle></div>',
+        template: '<div class="outer"><middle ng-repeat="l in list track by $index"></middle></div>',
         controller: function($scope) {
             console.log("outer controller fired ...")
         },
