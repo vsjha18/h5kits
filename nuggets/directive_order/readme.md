@@ -80,7 +80,7 @@ outer post link fired ..
 This is the template of the `outer` used in this example
 
 ```html
-<div class="outer">
+class="outer">
     <middle ng-repeat="l in list track by $index"></middle>
 </div>
 ```
@@ -125,7 +125,44 @@ inner post link fired ..
 middle post link fired ..
 ```
 
-difficult to explain above observation. At least it is not where documented on the web.
+difficult to explain above observation. Following links can help. The only thing I can
+say for sure is because the priority of ng-repeat is 1000 which is higher that user space
+directives which has a default priority of 0.
 
+[Read This](http://stackoverflow.com/questions/36975189/why-ng-repeat-changes-order-of-link-function-execution)  
 [Ref 1](http://stackoverflow.com/questions/16113647/ngrepeat-and-directives-execution-order)  
-[Ref 2](http://stackoverflow.com/questions/19270392/what-is-priority-of-ng-repeat-directive-can-you-change-it)
+[Ref 2](http://stackoverflow.com/questions/19270392/what-is-priority-of-ng-repeat-directive-can-you-change-it)  
+
+It seems once the ng-repeat is seen by angular, further dom parsing is paused (since ng-repeat has higher priority) and all the directives till that point is completed first. Then ng-repeat starts and then things
+happen as expected.
+
+The confirmation of above behavior is found when we move the ng-repeat to `middle` directive from `outer`
+directive, this is the order we get.
+
+```
+outer compile fired ...
+middle compile fired ...
+
+MAIN CONTROLLER
+
+outer controller fired ...
+outer pre link fired
+middle controller fired ...
+middle pre link fired
+middle post link fired ..
+outer post link fired ..
+
+inner compile fired ...
+inner controller fired ...
+inner pre link fired
+inner post link fired ..
+inner controller fired ...
+inner pre link fired
+inner post link fired ..
+```
+
+Hence we could summarize it like this:
+> Dom parsing is paused once ng-repeat is seen. Before starting ng-repeat all the directive
+> instantiation and the bare controllers are completed and then angular starts to execute
+> ng-repeat. All this happens becuase ng-repeat has a high priority of 1000 and hence happens
+> first before the subsequent dom could be parsed.
