@@ -9,7 +9,7 @@ code in the view
 *above outer directive contains middle and middle contains inner*
 
 this is the order:
-
+```
 outer compile fired ...
 middle compile fired ...
 inner compile fired ...
@@ -24,6 +24,7 @@ inner pre link fired
 inner post link fired ..
 middle post link fired ..
 outer post link fired ..
+```
 
 # case 2: With siblings
 
@@ -37,6 +38,7 @@ as usual middle contains the inner.
 </div>
 ```
 
+```
 outer compile fired ...
 middle compile fired ...
 inner compile fired ...
@@ -65,7 +67,7 @@ inner post link fired ..
 middle post link fired ..
 
 outer post link fired ..
-
+```
 
 > From the above two example it seems that angular instantiates the directives
 > as they appear in the template. It's a tree like parsing with the depth first
