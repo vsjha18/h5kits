@@ -16,7 +16,7 @@ app.directive("outer", function(){
         compile: function() {
             console.log("outer compile fired ...");
             return {
-                pre: function() {
+                pre: function(scope, iElems, a, c, tfn) {
                     console.log("outer pre link fired")
                 },
                 post: function(){

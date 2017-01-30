@@ -175,16 +175,33 @@ timing of triggering of compile function changes.
 
 ```
 outer compile fired ...
+
 MAIN CONTROLLER
+
 outer controller fired ...
 outer pre link fired
+
 middle compile fired ...
 middle controller fired ...
 middle pre link fired
+
 inner compile fired ...
 inner controller fired ...
 inner pre link fired
+
 inner post link fired ..
 middle post link fired ..
 outer post link fired ..
 ```
+
+because of above order it is possible for outer pre link function to change the dom below it.
+
+Also read [this](http://jvandemo.com/the-nitty-gritty-of-compile-and-link-functions-inside-angularjs-directives-part-2-transclusion/), in the older release of Angular, say 1.4.0 , the compile used to trigger together
+and in reverse order but now this behavior as explained in the above link doesn't exist.
+
+> There are few mysterious things also happening in case of tranclusion. For example if you invoke the
+> transclusion function, it actually causes things to render twice. The reason for this probably that,
+> either you should use <ng-transclude> </ng-transclude> or use the transclusion function, but not both.
+> Hence be careful in not using both.
+
+Overall the best article on this subject is [this](http://www.jvandemo.com/the-nitty-gritty-of-compile-and-link-functions-inside-angularjs-directives/)
