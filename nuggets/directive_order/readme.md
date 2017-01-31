@@ -161,11 +161,22 @@ inner pre link fired
 inner post link fired ..
 ```
 
-Hence we could summarize it like this:
+**Hence we could summarize it like this:**
 > Dom parsing is paused once ng-repeat is seen. Before starting ng-repeat all the directive
 > instantiation and the bare controllers are completed and then angular starts to execute
 > ng-repeat. All this happens becuase ng-repeat has a high priority of 1000 and hence happens
 > first before the subsequent dom could be parsed.
+
+> If there are ng-repeats in the lower down directives also, means if an ng-repeat is running
+> and dom created by this also contains an ng-repeat then, those ng-repeats are kept on hold!
+> first the current ng-repeat is completed which creates all the siblings and then only lower repeaters
+> are triggered. Before lower repeaters are triggered, it also completes all the post-link execution
+> of the siblings. Check the last example in this section for confirmation.
+
+
+**If we have nested ng-repeats in the templates, then it is safe to assume that
+parent pre/post links would have executed before lower repeaters are triggered
+**
 
 Extending the above scenario if we have `ng-repeat` in both outer and middle.
 
