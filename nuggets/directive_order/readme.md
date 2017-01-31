@@ -50,24 +50,25 @@ inner compile fired ...
 MAIN CONTROLLER
 
 outer controller fired ...
-
 outer pre link fired
+
+// first sibling
 middle controller fired ...
 middle pre link fired
 inner controller fired ...
 inner pre link fired
-
 inner post link fired ..
 middle post link fired ..
 
+// second sibling
 middle controller fired ...
 middle pre link fired
 inner controller fired ...
 inner pre link fired
-
 inner post link fired ..
 middle post link fired ..
 
+// in the end
 outer post link fired ..
 ```
 
@@ -104,23 +105,23 @@ MAIN CONTROLLER
 outer controller fired ...
 outer pre link fired
 outer post link fired ..
+// above outer is fully completed.
 
+// first sibling created by repeater, compile is fired only once.
 middle compile fired ...
 inner compile fired ...
-
 middle controller fired ...
 middle pre link fired
 inner controller fired ...
 inner pre link fired
-
 inner post link fired ..
 middle post link fired ..
 
+// second sibling created by repeater.
 middle controller fired ...
 middle pre link fired
 inner controller fired ...
 inner pre link fired
-
 inner post link fired ..
 middle post link fired ..
 ```
@@ -152,6 +153,7 @@ middle pre link fired
 middle post link fired ..
 outer post link fired ..
 
+// first and second inner sibling
 inner compile fired ...
 inner controller fired ...
 inner pre link fired
@@ -175,8 +177,7 @@ inner post link fired ..
 
 
 **If we have nested ng-repeats in the templates, then it is safe to assume that
-parent pre/post links would have executed before lower repeaters are triggered
-**
+parent pre/post links would have executed before lower repeaters are triggered**
 
 Extending the above scenario if we have `ng-repeat` in both outer and middle.
 
@@ -187,16 +188,19 @@ outer controller fired ...
 outer pre link fired
 outer post link fired ..
 
+// first sibling <middle>
 middle compile fired ...
 
 middle controller fired ...
 middle pre link fired
 middle post link fired ..
 
+// second sibling <middle>
 middle controller fired ...
 middle pre link fired
 middle post link fired ..
 
+// all lower down <inner> stuff. They are deferred till end.
 inner compile fired ...
 inner controller fired ...
 inner pre link fired
