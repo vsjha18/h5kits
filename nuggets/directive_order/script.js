@@ -8,8 +8,9 @@ app.controller("MainCtrl", function($scope){
 app.directive("outer", function(){
     return {
         restrict: "EA",
-        transclude: true,
-        template: '<div class="outer"><ng-transclude></ng-transclude></div>',
+        // transclude: true,
+        template: '<div class="outer"><middle ng-repeat="l in list track by $index"></middle></div>',
+        // template: '<div class="outer"><ng-transclude></ng-transclude></div>',
         controller: function($scope) {
             console.log("outer controller fired ...")
         },
@@ -30,8 +31,9 @@ app.directive("outer", function(){
 app.directive("middle", function(){
     return {
         restrict: "EA",
-        transclude: true,
-        template: '<div class="middle"><ng-transclude></ng-transclude></div>',
+        // transclude: true,
+        template: '<div class="middle"><inner ng-repeat="l in list track by $index"></inner></div>',
+        // template: '<div class="middle"><ng-transclude></ng-transclude></div>',
         controller: function($scope) {
             console.log("middle controller fired ...")
         },

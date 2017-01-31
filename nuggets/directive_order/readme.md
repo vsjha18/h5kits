@@ -167,6 +167,39 @@ Hence we could summarize it like this:
 > ng-repeat. All this happens becuase ng-repeat has a high priority of 1000 and hence happens
 > first before the subsequent dom could be parsed.
 
+Extending the above scenario if we have `ng-repeat` in both outer and middle.
+
+```
+outer compile fired ...
+MAIN CONTROLLER
+outer controller fired ...
+outer pre link fired
+outer post link fired ..
+
+middle compile fired ...
+
+middle controller fired ...
+middle pre link fired
+middle post link fired ..
+
+middle controller fired ...
+middle pre link fired
+middle post link fired ..
+
+inner compile fired ...
+inner controller fired ...
+inner pre link fired
+inner post link fired ..
+inner controller fired ...
+inner pre link fired
+inner post link fired ..
+inner controller fired ...
+inner pre link fired
+inner post link fired ..
+inner controller fired ...
+inner pre link fired
+inner post link fired ..
+```
 
 # case 4: Directives with transclusion
 
