@@ -1,0 +1,42 @@
+p {
+    background: lightcoral;
+    color: white;
+    text-align: center;
+}
+
+div.step ul {
+    color: grey;
+    position: relative;
+    background: lightgreen;
+    list-style-type: none;
+    padding: 0;
+    /*box-sizing: border-box;*/
+    border-radius: 10px;
+}
+
+div.step li {
+    display: inline-block;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    /*margin-right: -5px;*/
+}
+
+.one {
+    width: 10%;
+}
+
+.two {
+    width: 10%;
+}
+
+.three {
+    width: 55%;
+}
+
+.four {
+    width: 25%;
+    /*position: absolute;*/
+    right: 0;
+}

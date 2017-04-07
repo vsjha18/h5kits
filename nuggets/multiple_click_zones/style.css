@@ -1,0 +1,13 @@
+.big-box {
+    height: 400px;
+    width: 400px;
+    background: skyblue;
+    cursor: pointer;
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    background: lightcoral;
+    z-index: 100;
+}
