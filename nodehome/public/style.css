@@ -1,0 +1,8 @@
+#output {
+    background: #f8f8f8;
+    font-family: Consolas
+}
+
+#command {
+    border: 2px solid lightblue;
+}
